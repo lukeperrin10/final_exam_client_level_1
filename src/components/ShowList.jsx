@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Image } from "semantic-ui-react";
+import { Image, Header } from 'semantic-ui-react';
 
 const ShowList = () => {
   const [showsInfo, setShowsInfo] = useState([]);
@@ -14,7 +14,6 @@ const ShowList = () => {
           ];
 
         setShowsInfo(shows);
-        debugger;
       });
   }
 
@@ -26,7 +25,13 @@ const ShowList = () => {
     <div>
       {showsInfo.map((showInfo) => (
         <div className='display-show' data-cy='tv-shows'>
-          <Image  data-cy='tv-show-image' src={showInfo.content.images.boxart.url} alt='shows box art' />;
+          <Header data-cy='tv-show-title' >{showInfo.content.series.title}</Header>
+          <Image
+            data-cy='tv-show-image'
+            src={showInfo.content.images.boxart.url}
+            alt='shows box art'
+          />
+          ;
         </div>
       ))}
     </div>
@@ -34,4 +39,3 @@ const ShowList = () => {
 };
 
 export default ShowList;
-
